@@ -10,7 +10,46 @@ $( document ).ready(function() {
 		user_id: "24662369@N07",
 		extras: "description"
 	}, function(err, result) {
-		var allPhotos = result.photos.photo;
+		parseJSON(result);
+	});
+
+
+	//selecting sort options from the dropdown
+	$("#sortDropdown").on("click", "li a", function() {
+		var value = $(this).text();
+		$("#dropdownValue").html(value);
+		sortAndSearch({'sortValue': value});
+	});
+
+	//search through the images
+	$('#searchBttn').on('click', function(){
+		var value = $('#searchInput').val();
+		sortAndSearch({'searchValue': value});
+	})
+
+	//call search endpoint for flickr photos
+	function sortAndSearch(obj){
+		var value = $('#searchInput').val();
+		//empty array
+		photoArr = [];
+		//empty the grid
+		$(".photoGrid").empty();
+
+		//call flickr endpoint for search
+		flickr.photos.search({
+			user_id: "24662369@N07",
+			extras: "description",
+			text: obj.searchValue !== undefined ? obj.searchValue : "",
+			sort: obj.sortValue !== undefined ? obj.sortValue : ""
+		}, function(err, result){
+			parseJSON(result);
+		});
+
+	};
+
+	//parse the json and updated the photo grid
+	function parseJSON(response){
+		var allPhotos = response.photos.photo;
 
 		//parse the json response
 		allPhotos.forEach(function(photo){
@@ -33,5 +72,5 @@ $( document ).ready(function() {
 				$(".photoGrid .row:last").append("<div class='col-md-4'><h3>"+photo.title +"</h3><a href='#' class='thumbnail'><img src="+ photo.urlDefault +"></a><p>"/*+ photo.description */+"</p></div>");
 			}
 		});
-	});
+	};    
 });
