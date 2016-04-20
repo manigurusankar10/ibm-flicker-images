@@ -18,12 +18,19 @@ $( document ).ready(function() {
 	$("#sortDropdown").on("click", "li a", function() {
 		var value = $(this).text();
 		$("#dropdownValue").html(value);
+
+		//show loading icon
+		$('.sk-three-bounce').show();
+
 		sortAndSearch({'sortValue': value});
 	});
 
 	//search through the images
 	$('#searchBttn').on('click', function(){
 		var value = $('#searchInput').val();
+
+		//show loading icon
+		$('.sk-three-bounce').show();
 		sortAndSearch({'searchValue': value});
 	})
 
@@ -50,6 +57,9 @@ $( document ).ready(function() {
 	//parse the json and updated the photo grid
 	function parseJSON(response){
 		var allPhotos = response.photos.photo;
+
+		//hide loading icon
+		$('.sk-three-bounce').hide();
 
 		//parse the json response
 		allPhotos.forEach(function(photo){

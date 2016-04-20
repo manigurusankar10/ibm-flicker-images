@@ -1,25 +1,26 @@
 {
-	"name": "server",
-	"version": "1.0.0",
-	"description": "This exercise is to build a web app that pulls in images using the Flickr API",
-	"main": "server.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/manigurusankar10/ibm-flickr-images.git"
-	},
-	"author": "Mani Gurusankar",
-	"license": "ISC",
-	"dependencies": {
-		"bootstrap": "^3.3.6",
-		"express": "*",
-		"flickrapi": "^0.4.2",
-		"jquery": "^2.2.3"
-	},
-	"bugs": {
-		"url": "https://github.com/manigurusankar10/ibm-flickr-images/issues"
-	},
-	"homepage": "https://github.com/manigurusankar10/ibm-flickr-images#readme"
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This exercise is to build a web app that pulls in images using the Flickr API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manigurusankar10/ibm-flickr-images.git"
+  },
+  "author": "Mani Gurusankar",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "express": "*",
+    "flickrapi": "^0.4.2",
+    "jquery": "^2.2.3",
+    "spinkit": "^1.2.5"
+  },
+  "bugs": {
+    "url": "https://github.com/manigurusankar10/ibm-flickr-images/issues"
+  },
+  "homepage": "https://github.com/manigurusankar10/ibm-flickr-images#readme"
 }
