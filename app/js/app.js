@@ -77,9 +77,9 @@ $( document ).ready(function() {
 		//get each photo and append to the html page
 		photoArr.forEach(function(photo, index){
 			if(index%3 ===0){
-				$(".photoGrid").append("<div class='row'><div class='col-md-4'><h3>"+photo.title +"</h3><a href='#' class='thumbnail'><img src="+ photo.urlDefault +"></a><p>"/*+ photo.description*/ +"</p></div></div>");
+				$(".photoGrid").append("<div class='row'><div class='col-md-4'><h3>"+photo.title +"</h3><a href='#' class='img-rounded'><img src="+ photo.urlDefault +"></a><p>"/*+ photo.description*/ +"</p></div></div>");
 			} else {
-				$(".photoGrid .row:last").append("<div class='col-md-4'><h3>"+photo.title +"</h3><a href='#' class='thumbnail'><img src="+ photo.urlDefault +"></a><p>"/*+ photo.description */+"</p></div>");
+				$(".photoGrid .row:last").append("<div class='col-md-4'><h3>"+photo.title +"</h3><a href='#' class='img-rounded'><img src="+ photo.urlDefault +"></a><p>"/*+ photo.description */+"</p></div>");
 			}
 		});
 	};    

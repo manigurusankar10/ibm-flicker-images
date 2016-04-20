@@ -10,12 +10,12 @@
 		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="node_modules/spinkit/css/spinners/7-three-bounce.css">
 	</head>
-	<body>
+	<body class="bg-info">
 		<div class="jumbotron">
 			<div class="container">
-				<h1>NASA Images</h1>
-				<div class="row">
-					<div class="dropdown col-lg-2" id="sortDropdown">
+				<h1 class="text-center">NASA Images</h1>
+				<div class="row col-md-offset-3">
+					<div class="dropdown col-lg-3" id="sortDropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						<span id="dropdownValue">Sort By:</span>
 						<span class="caret"></span>
@@ -42,6 +42,6 @@
 			<div class="sk-child sk-bounce2"></div>
 			<div class="sk-child sk-bounce3"></div>
 		 </div>
-		<div class="photoGrid container"></div>
+		<div class="photoGrid container-fluid"></div>
 	</body>
 </html>
