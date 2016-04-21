@@ -24,6 +24,7 @@ $( document ).ready(function() {
 	$(".previous").on("click", function(){
 		if(this.page != 1){
 			this.page--;
+			$('.sk-three-bounce').show();
 			sortAndSearch();
 		}
 	}.bind(this));
@@ -32,14 +33,16 @@ $( document ).ready(function() {
 	$(".next").on("click", function(){
 		if(this.page < this.totalPage){
 			this.page++;
+			$('.sk-three-bounce').show();
 			sortAndSearch();
 		}
 	}.bind(this));
 
 	//selecting sort options from the dropdown
-	$("#sortDropdown").on("click", "li a", function() {
-		var value = this.$('this').text();
-		$("#dropdownValue").html(value);
+	$("#sortDropdown").on("click", "li a", function(evt) {
+		var value = $(evt.currentTarget).data("value");
+		var text = $(evt.currentTarget).text();
+		$("#dropdownValue").html(text);
 
 		//show loading icon
 		$('.sk-three-bounce').show();
