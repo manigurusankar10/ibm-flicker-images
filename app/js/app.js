@@ -6,9 +6,10 @@ $( document ).ready(function() {
 	  api_key: "a5e95177da353f58113fd60296e1d250",
 	});
 
-	flickr.people.getPhotos({
+	flickr.people.getPublicPhotos({
 		user_id: "24662369@N07",
-		extras: "description"
+		extras: "description",
+		per_page: 150
 	}, function(err, result) {
 		parseJSON(result);
 	});
@@ -46,6 +47,7 @@ $( document ).ready(function() {
 		flickr.photos.search({
 			user_id: "24662369@N07",
 			extras: "description",
+			per_page: 150,
 			text: obj.searchValue !== undefined ? obj.searchValue : "",
 			sort: obj.sortValue !== undefined ? obj.sortValue : ""
 		}, function(err, result){
@@ -68,7 +70,7 @@ $( document ).ready(function() {
 				"id": photo.id,
 				"server": photo.server,
 				"secret": photo.secret,
-				"urlDefault": 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg',
+				"urlDefault": 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg',
 				"description": photo.description._content,
 				"title": photo.title
 			});
@@ -76,11 +78,24 @@ $( document ).ready(function() {
 
 		//get each photo and append to the html page
 		photoArr.forEach(function(photo, index){
-			if(index%3 ===0){
-				$(".photoGrid").append("<div class='row'><div class='col-md-4'><h3>"+photo.title +"</h3><a href='#' class='img-rounded'><img src="+ photo.urlDefault +"></a><p>"/*+ photo.description*/ +"</p></div></div>");
-			} else {
-				$(".photoGrid .row:last").append("<div class='col-md-4'><h3>"+photo.title +"</h3><a href='#' class='img-rounded'><img src="+ photo.urlDefault +"></a><p>"/*+ photo.description */+"</p></div>");
-			}
+			$(".photoGrid").append("<a href='#' data-image=" + photo.id + "><img src="+ photo.urlDefault +"></a>");
 		});
-	};    
+	};  
+
+	//when someone clicks on the smaller image, make a call to get the larger image
+	$(".photoGrid").on("click", "a", function(){
+		var photoID = $(this).data('image');
+
+		//get info for that specific image
+		flickr.photos.getInfo({
+			photo_id: photoID
+		}, function(err, result){
+			var photo = result.photo;
+			var urlDefault = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
+			$("#largerImage .modal-title").text(photo.title._content);
+			$("#largerImage .modal-body").empty().append("<img src="+ urlDefault +">");
+			$("#largerImage").modal('toggle');
+		});
+	});
+
 });
