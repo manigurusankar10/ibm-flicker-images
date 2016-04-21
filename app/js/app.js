@@ -1,17 +1,16 @@
 $( document ).ready(function() {
 
-	var photoArr = [];
-
+	this.photoArr = [];
 	this.page = 1;
 	this.totalPage;
 	this.searchValue = "";
 	this.sortValue = ""
 
-	var flickr = new Flickr({
+	this.flickr = new Flickr({
 	  api_key: "a5e95177da353f58113fd60296e1d250",
 	});
 
-	flickr.people.getPublicPhotos({
+	this.flickr.people.getPublicPhotos({
 		user_id: "24662369@N07",
 		extras: "description",
 		page: this.page,
@@ -65,12 +64,12 @@ $( document ).ready(function() {
 	var sortAndSearch = function(){
 		var value = $('#searchInput').val();
 		//empty array
-		photoArr = [];
+		this.photoArr = [];
 		//empty the grid
 		$(".photoGrid").empty();
 
 		//call flickr endpoint for search
-		flickr.photos.search({
+		this.flickr.photos.search({
 			user_id: "24662369@N07",
 			extras: "description",
 			page: this.page,
@@ -98,7 +97,7 @@ $( document ).ready(function() {
 
 			//parse the json response
 			allPhotos.forEach(function(photo){
-				photoArr.push({
+				this.photoArr.push({
 					"farm": photo.farm,
 					"id": photo.id,
 					"server": photo.server,
@@ -107,10 +106,10 @@ $( document ).ready(function() {
 					"description": photo.description._content,
 					"title": photo.title
 				});
-			});
+			}.bind(this));
 
 			//get each photo and append to the html page
-			photoArr.forEach(function(photo, index){
+			this.photoArr.forEach(function(photo, index){
 				$(".photoGrid").append("<a href='#' data-image=" + photo.id + "><img src="+ photo.urlDefault +"></a>");
 			});
 		} else {
@@ -125,7 +124,7 @@ $( document ).ready(function() {
 		var photoID = $(this).data('image');
 
 		//get info for that specific image
-		flickr.photos.getInfo({
+		this.flickr.photos.getInfo({
 			photo_id: photoID
 		}, function(err, result){
 			var photo = result.photo;
