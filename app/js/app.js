@@ -90,23 +90,34 @@ $( document ).ready(function() {
 		//hide loading icon
 		$('.sk-three-bounce').hide();
 
-		//parse the json response
-		allPhotos.forEach(function(photo){
-			photoArr.push({
-				"farm": photo.farm,
-				"id": photo.id,
-				"server": photo.server,
-				"secret": photo.secret,
-				"urlDefault": 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg',
-				"description": photo.description._content,
-				"title": photo.title
-			});
-		});
+		//check if response has photos
+		if(allPhotos.length !== 0) {
+			$('.alert-warning').hide();
+			$('.next').show();
+			$('.previous').show();
 
-		//get each photo and append to the html page
-		photoArr.forEach(function(photo, index){
-			$(".photoGrid").append("<a href='#' data-image=" + photo.id + "><img src="+ photo.urlDefault +"></a>");
-		});
+			//parse the json response
+			allPhotos.forEach(function(photo){
+				photoArr.push({
+					"farm": photo.farm,
+					"id": photo.id,
+					"server": photo.server,
+					"secret": photo.secret,
+					"urlDefault": 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg',
+					"description": photo.description._content,
+					"title": photo.title
+				});
+			});
+
+			//get each photo and append to the html page
+			photoArr.forEach(function(photo, index){
+				$(".photoGrid").append("<a href='#' data-image=" + photo.id + "><img src="+ photo.urlDefault +"></a>");
+			});
+		} else {
+			$('.alert-warning').show();
+			$('.next').hide();
+			$('.previous').hide();
+		}
 	}.bind(this);  
 
 	//when someone clicks on the smaller image, make a call to get the larger image

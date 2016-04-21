@@ -10,3 +10,7 @@
 .row{
 	padding: 15px;
 }
+
+.alert-warning {
+	display: none;
+}
