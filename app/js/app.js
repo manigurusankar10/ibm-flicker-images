@@ -6,10 +6,12 @@ $( document ).ready(function() {
 	this.searchValue = "";
 	this.sortValue = ""
 
+	//create the flickr API object.
 	this.flickr = new Flickr({
 	  api_key: "a5e95177da353f58113fd60296e1d250",
 	});
 
+	//get all the photos
 	this.flickr.people.getPublicPhotos({
 		user_id: "24662369@N07",
 		extras: "description",
