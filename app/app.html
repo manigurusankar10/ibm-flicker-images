@@ -9,52 +9,58 @@
 		<script src="js/app.js"></script>
 		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="node_modules/spinkit/css/spinners/7-three-bounce.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css">
 	</head>
 	<body class="bg-info">
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="text-center">NASA Images</h1>
-				<div class="row col-md-offset-3">
-					<div class="dropdown col-lg-3" id="sortDropdown">
-						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						<span id="dropdownValue">Sort By:</span>
-						<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">date-posted-asc</a></li>
-							<li><a href="#">date-posted-desc</a></li>
-							<li><a href="#">date-taken-asc</a></li>
-							<li><a href="#">date-taken-desc</a></li>
-						</ul>
-					</div>
-
-					<div class="input-group col-lg-6">
-						<input type="text" class="form-control" placeholder="Search for..." id="searchInput">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button" id="searchBttn">Go!</button>
-						</span>
-					</div>
+		<div class="container">
+			<div class="page-header">
+				<h1>NASA Images</h1>
+			</div>
+			<div class="row">
+				<div class="dropdown col-lg-4" id="sortDropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span id="dropdownValue">Sort By:</span>
+					<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						<li data-value="date-posted-asc"><a href="#">date-posted-asc</a></li>
+						<li><a href="#">date-posted-desc</a></li>
+						<li><a href="#">date-taken-asc</a></li>
+						<li><a href="#">date-taken-desc</a></li>
+					</ul>
+				</div>
+				<div class="input-group col-lg-4" id="searchDiv">
+					<input type="text" class="form-control" placeholder="Search for..." id="searchInput">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="searchBttn">Go!</button>
+					</span>
 				</div>
 			</div>
+
 		</div>
 		<div class="sk-three-bounce container">
 			<div class="sk-child sk-bounce1"></div>
 			<div class="sk-child sk-bounce2"></div>
 			<div class="sk-child sk-bounce3"></div>
 		 </div>
-		<div class="photoGrid container">
-			<div class="modal fade" role="dialog" id="largerImage">
-				<div class="modal-dialog">
-					<div class="modal-content bg-info">
-					  <div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title"></h4>
-					  </div>
-					  <div class="modal-body">
-					  </div>
-					</div>
+		<div class="photoGrid container"></div>
+		<div class="modal fade" role="dialog" id="largerImage">
+			<div class="modal-dialog">
+				<div class="modal-content bg-info">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title"></h4>
+				  </div>
+				  <div class="modal-body">
+				  </div>
 				</div>
 			</div>
 		</div>
+		<nav class="container">
+		  <ul class="pager">
+			<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+			<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+		  </ul>
+		</nav>
 	</body>
 </html>
