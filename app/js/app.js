@@ -122,8 +122,8 @@ $( document ).ready(function() {
 	}.bind(this);  
 
 	//when someone clicks on the smaller image, make a call to get the larger image
-	$(".photoGrid").on("click", "a", function(){
-		var photoID = $(this).data('image');
+	$(".photoGrid").on("click", "a", function(evt){
+		var photoID = $(evt.currentTarget).data('image');
 
 		//get info for that specific image
 		this.flickr.photos.getInfo({
@@ -135,6 +135,6 @@ $( document ).ready(function() {
 			$("#largerImage .modal-body").empty().append("<img src="+ urlDefault +">");
 			$("#largerImage").modal('toggle');
 		});
-	});
+	}.bind(this));
 
 });
