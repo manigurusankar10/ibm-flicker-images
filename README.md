@@ -18,3 +18,17 @@ https://nodejs.org/en/
 3) Run `node server.js`
 
 4) Open any broswer at localhost:3000
+
+---------------------------------------
+
+#Technologies used:
+
+1) Bootstrap: framework for clean and basic looking HTML templates
+
+2) jQuery: JS Library that is need for Bootstrap framework
+
+3) ExpressJS: Node.js Framework for building applications	http://expressjs.com/
+
+4) flickrapi: a Node.js and browser Flickr API Library	https://www.npmjs.com/package/flickrapi
+
+5) spinkit: a collection package of loading indicators animated with CSS  https://www.npmjs.com/package/spinkit
